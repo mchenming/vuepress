@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于数组的常用方法整理 | 陈明的个人博客</title>
+    <meta name="description" content="陈明的个人博客 vuepress搭建">
+    <meta name="generator" content="VuePress 1.3.1">
+    
+    
+    <link rel="preload" href="/vuepress/assets/css/0.styles.b6028478.css" as="style"><link rel="preload" href="/vuepress/assets/js/app.3a2db6f2.js" as="script"><link rel="preload" href="/vuepress/assets/js/2.876d6610.js" as="script"><link rel="preload" href="/vuepress/assets/js/11.62aba92e.js" as="script"><link rel="prefetch" href="/vuepress/assets/js/10.73f51fb0.js"><link rel="prefetch" href="/vuepress/assets/js/12.5c8225a9.js"><link rel="prefetch" href="/vuepress/assets/js/13.d12220d9.js"><link rel="prefetch" href="/vuepress/assets/js/14.b769824f.js"><link rel="prefetch" href="/vuepress/assets/js/15.b2fd2112.js"><link rel="prefetch" href="/vuepress/assets/js/16.47fb3e99.js"><link rel="prefetch" href="/vuepress/assets/js/17.5360667d.js"><link rel="prefetch" href="/vuepress/assets/js/18.a48c1f76.js"><link rel="prefetch" href="/vuepress/assets/js/3.05df3a41.js"><link rel="prefetch" href="/vuepress/assets/js/4.e974cbc9.js"><link rel="prefetch" href="/vuepress/assets/js/5.9787fe4c.js"><link rel="prefetch" href="/vuepress/assets/js/6.18c90247.js"><link rel="prefetch" href="/vuepress/assets/js/7.9a51206d.js"><link rel="prefetch" href="/vuepress/assets/js/8.75a1168b.js"><link rel="prefetch" href="/vuepress/assets/js/9.5811b479.js">
+    <link rel="stylesheet" href="/vuepress/assets/css/0.styles.b6028478.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress/" class="home-link router-link-active"><img src="/vuepress/img/head1.png" alt="陈明的个人博客" class="logo"> <span class="site-name can-hide">陈明的个人博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress/enote/js/面试题/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记记录" class="dropdown-title"><span class="title">笔记记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/enote/es/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/js/" class="nav-link router-link-active">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/请求方式/" class="nav-link">
+  axios/fetch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/vuex源代码简易版/" class="nav-link">
+  vuex源码珠峰
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vuepress/enote/js/面试题/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记记录" class="dropdown-title"><span class="title">笔记记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/enote/es/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/js/" class="nav-link router-link-active">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/请求方式/" class="nav-link">
+  axios/fetch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/vuex源代码简易版/" class="nav-link">
+  vuex源码珠峰
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/vuepress/enote/js/first.html" class="sidebar-link">js基础</a></li><li><a href="/vuepress/enote/js/second.html" class="active sidebar-link">关于数组的常用方法整理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress/enote/js/second.html#关于数组的常用方法整理" class="sidebar-link">关于数组的常用方法整理</a></li><li class="sidebar-sub-header"><a href="/vuepress/enote/js/second.html#常用数组方法" class="sidebar-link">常用数组方法</a></li><li class="sidebar-sub-header"><a href="/vuepress/enote/js/second.html#array-from" class="sidebar-link">Array.from</a></li></ul></li><li><a href="/vuepress/enote/js/third.html" class="sidebar-link">generator</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="关于数组的常用方法整理"><a href="#关于数组的常用方法整理" class="header-anchor">#</a> 关于数组的常用方法整理</h2> <h2 id="常用数组方法"><a href="#常用数组方法" class="header-anchor">#</a> 常用数组方法</h2> <h3 id="array-push-在数组最后一项添加元素-会改变原数组-返回数组的新长度"><a href="#array-push-在数组最后一项添加元素-会改变原数组-返回数组的新长度" class="header-anchor">#</a> array.push() 在数组最后一项添加元素 会改变原数组 返回数组的新长度</h3> <h3 id="array-pop-删除数组的最后一项-改变原数组-返回被删除的哪一个元素"><a href="#array-pop-删除数组的最后一项-改变原数组-返回被删除的哪一个元素" class="header-anchor">#</a> array.pop()  删除数组的最后一项 改变原数组 返回被删除的哪一个元素</h3> <h3 id="array-unshift-在数组第一项前追加元素-改变原数组-返回数组的新长度"><a href="#array-unshift-在数组第一项前追加元素-改变原数组-返回数组的新长度" class="header-anchor">#</a> array.unshift() 在数组第一项前追加元素 改变原数组 返回数组的新长度</h3> <h3 id="array-shift-删除数组的第一项元素-改变原素组-返回被删除的那个元素"><a href="#array-shift-删除数组的第一项元素-改变原素组-返回被删除的那个元素" class="header-anchor">#</a> array.shift() 删除数组的第一项元素 改变原素组 返回被删除的那个元素</h3> <h3 id="array-splice-index-length"><a href="#array-splice-index-length" class="header-anchor">#</a> array.splice(index,length,'')</h3> <blockquote><blockquote><blockquote><p>当只有两个参数的时候 表示从数组的第index开始删除length哥元素
+当有三个参数的时候表示删除完后用str 替代</p></blockquote></blockquote></blockquote> <h3 id="array-sort-数组排序"><a href="#array-sort-数组排序" class="header-anchor">#</a> array.sort() 数组排序</h3> <ul><li>数组中常用的迭代方法
+<ul><li>forEach</li> <li>map</li> <li>filter</li> <li>find</li> <li>every</li> <li>some</li> <li>reduce
+*** for in 和Object.keys(obj).forEach((key)=&gt;{})区别
+for in会便利原型每次都要判断是否是自己身上的属性消耗性能</li></ul></li></ul> <h2 id="array-from"><a href="#array-from" class="header-anchor">#</a> Array.from</h2> <div class="language- extra-class"><pre><code>+ 将一个类数组对象或者可便利的对象转换成一个真正的数组
+    + 所谓类数组对象最基本的要求就是具有length属性
+    ```
+    let arraylike = {
+        0:'tom',
+        1:'65',
+        2: '男',
+        3:['nike','adidas','puma'],
+        'length': 4
+    }
+    let arr =Array.from(arraylike)
+    console.log(arr)  ==&gt; ['tom','65', '男',['nike','adidas','puma']]
+    // 如果将上面代码中length属性去掉呢？实践证明，答案会是一个长度为0的空数组
+    ```
+    + 将字符串转换为数组
+    ```
+    let str = 'hello world'
+    console.log(Array.from(str)) // ['h','e','l','l','o',' ','w','o','r','l','d']
+    ```
+</code></pre></div><h3 id="数组的遍历"><a href="#数组的遍历" class="header-anchor">#</a> 数组的遍历</h3> <h4 id="for-of-遍历数组项（可以随时使用break语句停止遍历）"><a href="#for-of-遍历数组项（可以随时使用break语句停止遍历）" class="header-anchor">#</a> for of 遍历数组项（可以随时使用break语句停止遍历）</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>  const colors = ['red', 'yellow', 'blue']
+  for (const color of colors) {
+      console.log(color) //=&gt;'red' 'yellow' 'blue'
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="array-foreach"><a href="#array-foreach" class="header-anchor">#</a> array.forEach()</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>  const arr = ['name','age','sex']
+  arr.forEach((item,index)=&gt;{
+      console.log(item,index)  =&gt; name,0  age,1 sex,3
+  })
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="数组的映射"><a href="#数组的映射" class="header-anchor">#</a> 数组的映射</h3> <h4 id="array-map-方法-创建一个新的映射数组，而不是改变原数组"><a href="#array-map-方法-创建一个新的映射数组，而不是改变原数组" class="header-anchor">#</a> Array.map()方法  创建一个新的映射数组，而不是改变原数组</h4> <div class="language- extra-class"><pre><code>```
+let arr = [1,3,5]
+let numberarr = arr.map(item=&gt;{
+    return item+1
+})
+console.log(numberarr)  =&gt; [2,4,6]
+```
+</code></pre></div><h3 id="数据的简化"><a href="#数据的简化" class="header-anchor">#</a> 数据的简化</h3> <h4 id="array-reduce-方法-通过调用callback函数来讲数组简化为一个值"><a href="#array-reduce-方法-通过调用callback函数来讲数组简化为一个值" class="header-anchor">#</a> Array.reduce() 方法 通过调用callback函数来讲数组简化为一个值</h4> <div class="language- extra-class"><pre><code>```
+let arr = [2,3,5]
+function add (accumulator,number){
+    return accumulator + number
+}
+const number = arr.reduce(add,1)
+console.log(number)  // 11
+// 将accumulator初始化为1，然后对每个累加数字和的数组项掉用add函数
+```
+</code></pre></div><h3 id="数据的连接方法"><a href="#数据的连接方法" class="header-anchor">#</a> 数据的连接方法</h3> <h4 id="array-concat-方法-创建一个新的数组而不改变原来的数组"><a href="#array-concat-方法-创建一个新的数组而不改变原来的数组" class="header-anchor">#</a> array.concat()方法 (创建一个新的数组而不改变原来的数组)</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>let arr = [1,2,3]
+let arrother = [4,5,6]
+let newarr = arr.concat(arrother)
+console.log(newarr)  =&gt; [1,2,3,4,5,6]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h4 id="扩展运算符"><a href="#扩展运算符" class="header-anchor">#</a> 扩展运算符</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code> let arr = [9,8,7,1]
+ let aa = [1,2,3]
+ let bb = [...arr,...aa]
+
+ let [a,...dd] = bb
+ console.log(bb)  [9,8,7,1,1,2,3]
+ console.log(a)  9
+ console.log(dd) [8,7,1,1,2,3]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="array-slice-方法-和splice方法-slice不会改变原数组-splice改变原数组"><a href="#array-slice-方法-和splice方法-slice不会改变原数组-splice改变原数组" class="header-anchor">#</a> array.slice()方法 和splice方法 slice不会改变原数组 splice改变原数组</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code> let arr = [1,2,3,4,5]
+ let bb = arr.slice(0,2)
+ console.log(bb) =&gt; [1,2]
+ console.log(arr) =&gt; [1,2,3,4,5]
+ let cc = arr.splice(2)
+ console.log(cc) =&gt; [3,4,5]
+ console.log(arr) =&gt; [1,2]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="数组的拷贝"><a href="#数组的拷贝" class="header-anchor">#</a> 数组的拷贝</h3> <div class="language- extra-class"><pre><code>1. 扩展运算符
+```
+const color = ['pink','red','blue']
+const clone = [...color]
+console.log(color === clone)  =&gt; false
+```
+// 浅拷贝
+2.concat()
+```
+const color = ['red','white','black']
+let arr =[].concat(color)
+console.log(arr===color) false
+```
+</code></pre></div><h3 id="arr-includes"><a href="#arr-includes" class="header-anchor">#</a> arr.includes()</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>const number = [1,2,3,4,5]
+number.includes(2) =&gt;true
+number.includes(8) =&gt;false
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="arr-find-返回数组中满足条件的第一个元素的值-如果不存在则返回undefine"><a href="#arr-find-返回数组中满足条件的第一个元素的值-如果不存在则返回undefine" class="header-anchor">#</a> arr.find() 返回数组中满足条件的第一个元素的值 如果不存在则返回undefine</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>let arr = [2,3,4,5,6]
+let a = arr.find(item=&gt;{
+    return item%3 === 0
+})
+console.log(a)  // 3
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="array-indexof-如果找不到元素就返回-1-找得到返回元素索引"><a href="#array-indexof-如果找不到元素就返回-1-找得到返回元素索引" class="header-anchor">#</a> array.indexOf() 如果找不到元素就返回-1 找得到返回元素索引</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>let aa = [1,2,3,4]
+let a = aa.indexOf(5)
+console.log(a)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="array-every-一个数组中的每一样是否满足只要有一项不满足return-false"><a href="#array-every-一个数组中的每一样是否满足只要有一项不满足return-false" class="header-anchor">#</a> array.every()   一个数组中的每一样是否满足只要有一项不满足return false</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>let aa = [1,2,3,4]
+let flag = aa.every(item =&gt; {
+    return item%1===0
+})
+console.log(flag) true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="array-some-数组中只要有一项满足条件则返回true"><a href="#array-some-数组中只要有一项满足条件则返回true" class="header-anchor">#</a> array.some()  数组中只要有一项满足条件则返回true</h3> <h3 id="array-filter-过滤返回满足条件的数组"><a href="#array-filter-过滤返回满足条件的数组" class="header-anchor">#</a> array.filter() 过滤返回满足条件的数组</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>let aa = [1,2,3,4]
+let arr = aa.filter(item=&gt;{
+    return item%2 === 1
+})
+console.log(arr)  // [1,3]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vuepress/enote/js/first.html" class="prev">
+        js基础
+      </a></span> <span class="next"><a href="/vuepress/enote/js/third.html">
+        generator
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vuepress/assets/js/app.3a2db6f2.js" defer></script><script src="/vuepress/assets/js/2.876d6610.js" defer></script><script src="/vuepress/assets/js/11.62aba92e.js" defer></script>
+  </body>
+</html>

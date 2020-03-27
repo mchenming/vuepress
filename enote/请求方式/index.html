@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>axios 是基于ajax和promise封装的库 | 陈明的个人博客</title>
+    <meta name="description" content="陈明的个人博客 vuepress搭建">
+    <meta name="generator" content="VuePress 1.3.1">
+    
+    
+    <link rel="preload" href="/vuepress/assets/css/0.styles.b6028478.css" as="style"><link rel="preload" href="/vuepress/assets/js/app.3a2db6f2.js" as="script"><link rel="preload" href="/vuepress/assets/js/2.876d6610.js" as="script"><link rel="preload" href="/vuepress/assets/js/15.b2fd2112.js" as="script"><link rel="prefetch" href="/vuepress/assets/js/10.73f51fb0.js"><link rel="prefetch" href="/vuepress/assets/js/11.62aba92e.js"><link rel="prefetch" href="/vuepress/assets/js/12.5c8225a9.js"><link rel="prefetch" href="/vuepress/assets/js/13.d12220d9.js"><link rel="prefetch" href="/vuepress/assets/js/14.b769824f.js"><link rel="prefetch" href="/vuepress/assets/js/16.47fb3e99.js"><link rel="prefetch" href="/vuepress/assets/js/17.5360667d.js"><link rel="prefetch" href="/vuepress/assets/js/18.a48c1f76.js"><link rel="prefetch" href="/vuepress/assets/js/3.05df3a41.js"><link rel="prefetch" href="/vuepress/assets/js/4.e974cbc9.js"><link rel="prefetch" href="/vuepress/assets/js/5.9787fe4c.js"><link rel="prefetch" href="/vuepress/assets/js/6.18c90247.js"><link rel="prefetch" href="/vuepress/assets/js/7.9a51206d.js"><link rel="prefetch" href="/vuepress/assets/js/8.75a1168b.js"><link rel="prefetch" href="/vuepress/assets/js/9.5811b479.js">
+    <link rel="stylesheet" href="/vuepress/assets/css/0.styles.b6028478.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress/" class="home-link router-link-active"><img src="/vuepress/img/head1.png" alt="陈明的个人博客" class="logo"> <span class="site-name can-hide">陈明的个人博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress/enote/js/面试题/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记记录" class="dropdown-title"><span class="title">笔记记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/enote/es/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/请求方式/" class="nav-link">
+  axios/fetch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/vuex源代码简易版/" class="nav-link">
+  vuex源码珠峰
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vuepress/enote/js/面试题/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="笔记记录" class="dropdown-title"><span class="title">笔记记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/enote/es/" class="nav-link">
+  es6
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/typescript/" class="nav-link">
+  typescript
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/enote/请求方式/" class="nav-link">
+  axios/fetch
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/" class="nav-link">
+  vuex
+</a></li><li class="dropdown-item"><!----> <a href="/vuepress/vue/vuex/vuex源代码简易版/" class="nav-link">
+  vuex源码珠峰
+</a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="axios-是基于ajax和promise封装的库"><a href="#axios-是基于ajax和promise封装的库" class="header-anchor">#</a> axios 是基于ajax和promise封装的库</h2> <h2 id="fetch-好处-浏览器内置的类，天生就基于promise进行管理的"><a href="#fetch-好处-浏览器内置的类，天生就基于promise进行管理的" class="header-anchor">#</a> fetch 好处  浏览器内置的类，天生就基于promise进行管理的</h2> <h3 id="axios"><a href="#axios" class="header-anchor">#</a> axios</h3> <div class="language- extra-class"><pre><code>```
+import axios from 'axios'
+import qs from 'qs';  // node模块转换数据格式  name=13&amp;age=12 
+
+// 根据环境变量分接口默认地址
+switch (process.env.NODE_ENV){
+    case &quot;production&quot;:  // 生产环境公共前缀
+        axios.defaults.baseURL = 'http: //192.128.0.154'
+        break;
+    case 'test':
+        axios.defaults.baseURL ='http: //192.128.0.154'
+        break;
+}
+
+// 设置超时事件和跨域是否允许携带凭证
+axios.defaults.timeOut = 10000
+axios.defaults.withCredentials = true
+
+// 设置请求传递数据的格式  x-www.form-urlencoded
+axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded';
+axios.defaults.transformRequest = data =&gt; qs.stringify(data);  // transformRequest   ==&gt;post请求对数据的处理
+
+axios.interceptors.request.use(config =&gt; {
+    let token = localStorage.getItem('token')
+    token &amp;&amp; (config.headers.Authorization = token)
+    return config
+},error =&gt; {
+    return Promise.reject(error)
+})
+
+axios.interceptors.response.use(response =&gt; {
+    return response.data
+},error =&gt; {
+    if(error.response) {
+        let response = error.response
+        switch(response.status){
+            case 401:  //权限
+                break;
+            case 403:
+                break; //token过期
+            case 404:
+                break; //找不到页面
+        }
+    } else {
+        return Promise.reject(error)
+    }
+})
+
+export default axios
+```
+</code></pre></div><h3 id="fetch-封装"><a href="#fetch-封装" class="header-anchor">#</a> fetch 封装</h3> <div class="language- extra-class"><pre><code>```
+import qs from 'qs'
+
+let baseURL = ''
+let baseURLArr = [{
+    type: 'dev',
+    url: 'http://192.102.0.35'
+}, {
+    type: 'test',
+    url: 'http://192.102.0.87'
+}, {
+    type:'production',
+    url: 'http://192.128.0.70'
+}]
+
+// 更具环境变量判断公共路径
+baseURLArr.forEach(item =&gt; {
+    if (process.env.NODE_ENV === item.type) {
+        baseURL = item.url
+    }
+})
+
+export default function request (url,options = {}){
+    url = baseURL + url
+    !options.methods? options.methods = 'GET' : null
+    if(options.hasOwnProperty('params')) {
+        if(/^(GET|DELETE|HEAD|OPTIONS)$/i.test(options.methods)) {
+            const ask = url.includes('?') ? '&amp;' : '? '
+            url += `${ask}${qs.stringify(params)}`
+        }
+        delete options.params
+    }
+    // 合并配置项
+    options = Object.assign({
+        // 允许携带跨域资源凭证 some-origin同源可以 omit都拒绝
+        credentials: 'include',
+        headers: {},
+    },options)
+    options.headers.Accept = 'application/json';
+    
+    // token验证
+    let token = localStorage.getItem('token')
+    token &amp;&amp; (options.headers.Authorization = token)
+
+    //post请求处理
+    if(/^(POST|PUT)$/i.test(options.method)) {
+        !options.type ? options.type = 'urlencoded' : null
+        if(options.type === 'urlencoded') {
+            options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            options.body = qs.stringify(options.body)
+        }
+        if(options.type = 'json') {
+            options.headers['Content-Type'] = 'application/json'
+            options.body =JSON.stringify(options.body)
+        }
+    }
+
+    return fetch(url,options).then(res =&gt; {
+        if(!/^(2|3)\d{2}$/.text(res.status)) {
+            switch(res.status) {
+                case 401:
+                    break;  //当前请求一般是需要用户验证（未登录）
+                case 403: 
+                // (token过去)
+                localStorage.removeItem('token')
+                break;
+                case 404:
+                    // 请求失败，请求所希望得到的资源未被在服务器上发现
+                break;
+            }
+        }
+        return res.json()
+    }).catch(error =&gt; {
+        if(!window.navigator.onLine) {
+            // 断开网络，可以让其跳转到断网页面
+            return 
+        }
+        return Promise.reject(error)
+    })
+}
+```</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/vuepress/assets/js/app.3a2db6f2.js" defer></script><script src="/vuepress/assets/js/2.876d6610.js" defer></script><script src="/vuepress/assets/js/15.b2fd2112.js" defer></script>
+  </body>
+</html>
