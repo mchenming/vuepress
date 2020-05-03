@@ -22,3 +22,6 @@
 ### this is version 1.0
 
 ### git checkout -- index.html  将工作区的代码回退到上个版本
+> 如果将工作区的代码已经提交到暂存区可以 git restore --staged (filename)
+> git status 查看当前状态因该是已在工作区
+> git checkout -- (filename) 回退到上一个版本
