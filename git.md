@@ -20,3 +20,5 @@
 ### git log --oneline
 
 ### this is version 1.0
+
+### git checkout -- index.html  将工作区的代码回退到上个版本
