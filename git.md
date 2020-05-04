@@ -25,7 +25,6 @@
 > git restore -- (filename) 回退到上一个版本
 
 ### 建分支 git branch dev
-    jack
 > git branch
   git checkout dev
   删除分支当前分支需要切换到其他分支上
