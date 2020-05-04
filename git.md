@@ -19,9 +19,12 @@
 ### git log  查看提交记录
 ### git log --oneline
 
-### this is version 1.0
-
-### git checkout -- index.html  将工作区的代码回退到上个版本
+### git restore -- index.html  将工作区的代码回退到上个版本
 > 如果将工作区的代码已经提交到暂存区可以 git restore --staged (filename)
 > git status 查看当前状态因该是已在工作区
-> git checkout -- (filename) 回退到上一个版本
+> git restore -- (filename) 回退到上一个版本
+
+### 建分支 git branch dev 
+> git branch
+  git checkout dev
+  删除分支当前分支需要切换到其他分支上
