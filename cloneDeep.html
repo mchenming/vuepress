@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let obj ={
+        name: 'chenming',
+        hobby: {
+            a:'computer',
+            b: 'basketball'
+        }
+    }
+    function _type(obj) {
+        return Object.prototype.toString.call(obj)
+    }
+    function cloneDeep (obj) {
+        let newobj = new obj.constructor
+        if (obj === null) return null
+        if (typeof obj !== 'object') return obj
+        if (_type(obj) === '[object Date]') return new Date(obj)
+        if (_type(obj) === '[object RegExp]') return new RegExp(obj)
+        for (let key in obj) {
+            if(!obj.hasOwnProperty(key)) break
+            newobj[key] = cloneDeep(obj[key])
+        }
+        return newobj
+    }
+    let arr = [1,2,[3,4,5]]
+    // let newarr = [...arr]
+    // let newarr = cloneDeep(arr)
+    // console.log(arr,newarr)
+    // console.log(arr === newarr)
+    // console.log(arr[2] === newarr[2])
+    let newobj = cloneDeep(obj) 
+    // console.log(obj,newobj)    
+    newobj.hobby.a = '...aa'
+    console.log(obj,newobj)    
+</script>
+</html>
