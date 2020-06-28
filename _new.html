@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function FW(name) {
+        this.name = name
+    }
+    FW.prototype.like = function like(){
+        console.log(`我的名字是${this.name}`)
+    }
+    // let fun = new FW('嘟嘟嘟')
+    // fun.like()
+    // console.log(fun.name)
+    
+    let fun = _new(FW,'HELLO ketty')
+    fun.like()
+    console.log(fun.name)
+
+    function _new (func,...args) {
+        // new三个步骤
+        // 1.创造一个实例对象将实例对象上的__proto__ 和func.prototype关联上
+        let obj = Object.create(func.prototype)
+        // 2.将函数内部的this指向新建出来的实例对象
+        let result = func.call(obj,...args)
+        // let result = func.apply(obj,[...args])
+        // 3.判断函数返回值是否为引用数据类型 如果为引用数据类型就返回result 如果不是就返回实例对象
+        if ((result !== null) && typeof result === 'object' || typeof result === 'function') {
+            return result
+        }
+        return obj
+    }
+</script>
+</html>
