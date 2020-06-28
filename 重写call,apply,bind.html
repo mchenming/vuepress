@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    (function (proto) {
+        proto.call = function call(newthis = window, ...args) {
+            let type = typeof newthis
+            if (type !== 'object' && type !== 'function' && type !== 'symbol') {
+                switch (type) {
+                    case 'number':
+                        newthis = new Number(newthis);
+                        break;
+                    case 'string':
+                        newthis = new String(newthis);
+                        break;
+                    case 'boolean': break
+                        newthis = new Boolean(newthis)
+                        break;
+                }
+            }
+            newthis.$fn = this
+            return newthis.$fn(...args)
+        }
+        proto.apply = function apply(newthis = window, args) {
+            // console.log(args)
+            newthis.$fn = this
+            return newthis.$fn(...args)
+        }
+        proto.bind = function bind(newthis = window, ...args) {
+            return (...e) => {
+                this.call(newthis, ...args.concat(e))
+            }
+        }
+    })(Function.prototype)
+
+    let obj = {
+        name: 'chenming',
+        fn() {
+            console.log(this)
+        }
+    }
+    let newobj = {
+        name: 'newchenming',
+        fn() {
+            console.log(this)
+        }
+    }
+    var name = 'zhangsan'
+    obj.fn.call('3')
+    // obj.fn.apply(newobj, [10, 20, 10])
+</script>
+
+</html>

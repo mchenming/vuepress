@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button>点击</button> 
+</body>
+
+<script>
+    //  this的五种指向情况
+
+
+    // 1.this 给元素某个行为绑定方法，事件触发，方法执行，此时方法中的this一般都是当前元素本身
+    /* 
+        btn.onclick = function (){
+            console.log(this) ==>元素本身
+        }
+        btn.addEventListener('click',function(){
+            console.log(this) ==> 元素
+        },false)
+    */
+
+
+   /* 
+        2.this:普通函数执行，他里面的this是谁，取决于方法执行前面是否有'.'有点的话点前面this是谁就是谁没有this指向就是window严格模式下是undefined'
+        function fn (){
+            console.log(this)
+        }
+        let obj = {
+            name: 'OBJ',
+            fn:fn
+        }
+        fn() => window
+        obj.fn => obj
+        console.log(obj.hasOwnProperty('name'))  =>hasOwnProperty方法中的this:obj true
+        console.log(obj.__proto__.hasOwnProperty('name')) =>hasOwnProperty方法中的this:obj.__proto__(Object.prototype) false
+        console.log(Object.prototype.hasOwnProperty.call(obj,'name')) ==>obj.hasOwnProperty('name')
+        hasOwnProperty是用来检测某个属性名是否属于当前对象的私有属性
+        in是用来检测是否为其属性（不论公有还是私有包括原型上面的）
+        console.log('toString' in obj)  true
+        console.log(obj.hasOwnProperty('toString')) false
+   */
+
+  /* 
+    3.this构造函数内部中this指向当前类的实例（谁new出来this指向谁）
+    function Fn(){
+        console.log(this)
+        this.xxx = xxx是给当前实例设置私有属性
+    }
+    let abc = new Fn  ==>abc
+  */
+
+ /* 
+    4.箭头函数中this自身没有this所用到的this都是其上下文中的this
+    箭头函数没有原型prototypr也就是没有构造器,所以不能被new执行
+    他没有arguments实参集合(可以基于...args剩余运算符获取)
+    let obj = {
+        name: 'OBJ',
+        fn: function () {
+            setTimeout(function(){
+                console.log(this)  ==>window定时器中的this指向window换成箭头函数指向obj
+            },1000)
+        }
+    }
+ */
+
+/* 
+    5.this基于call/apply/bind可以改变函数中this的指向(强行改变)
+
+    obj.fn.call(aa)  执行的函数还是fn但是this指向aa
+
+*/
+
+(function(proto){
+    proto.bind = function bind(content,...args){
+        // 首先判断是否有content或者是否为null或undefined如果是则指向window
+        if (content == undefined) {
+            content = window
+        }
+        return (...ev)=>{
+          this.call(content,...args.concat(ev))
+        }
+    }
+    proto.call = function call (content,...args) {
+        console.log(this)
+        content.$fn = this
+        let result = content.$fn(...args)
+        return result
+    }
+    proto.apply = function apply (content,...args) {
+        // console.log(this)
+        content.$fn = this
+        // console.log(content)
+        let result = content.$fn([...args])
+        return result
+    }
+})(Function.prototype)
+let obj = {
+    name: 'aaa',
+    fn(x,y){
+        console.log(this.name,111)
+        return 22
+    }
+}
+let aa ={
+    name: 'xxx',
+    fn([arr]){
+        console.log(this)
+        // return 11
+    }
+}
+// setTimeout(obj.fn.bind(window,10,20),1000)
+document.body.onclick = obj.fn.bind(window,10,20)
+// console.log(obj.fn.call(aa,10,20))
+// obj.fn()
+obj.fn.apply(aa,[10,20])
+</script>
+</html>
