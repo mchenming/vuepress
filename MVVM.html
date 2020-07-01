@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+</body>
+
+<script>
+    function Vue (option) {
+        this.$el = document.querySelector(option.el)
+        this.$data = option.data || {}
+        // 对数据进行劫持
+        observe(this.$data)
+        // 要对dom结构进行vue语法渲染
+        nodetoRender(this.$el)
+    }
+
+    function observe(data) {
+        Object.keys(data).forEach(item => {
+            // 对数据进行劫持
+            defineReactive(data, item, data[item])
+        })
+    }
+
+    function defineReactive (data, key, value) {
+        Object.defineProperty(data, key, {
+            get () {
+                console.log('get')
+                return value
+            },
+            set (newvalue) {
+                console.log('set')
+                value = newvalue
+            }
+        })
+    }
+
+    function nodetoRender (node) {
+
+    }
+    var vm = new Vue ({
+        el: '#app',
+        data: {
+            name: 'chenming',
+            time: '2020-06-30 23:00:00'
+        }
+    })
+</script>
+</html>
