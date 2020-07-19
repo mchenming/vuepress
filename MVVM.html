@@ -7,21 +7,28 @@
 </head>
 <body>
     <div id="app">
-        {{ message }}
+        <h1>
+            {{name}}
+        </h1>
+        <h1>{{age}}</h1>
+        <input type="text" v-model='name'>
+        <input type="text" v-model='age'>
     </div>
 </body>
 
 <script>
+    let target = null
     function Vue (option) {
         this.$el = document.querySelector(option.el)
         this.$data = option.data || {}
         // 对数据进行劫持
         observe(this.$data)
         // 要对dom结构进行vue语法渲染
-        nodetoRender(this.$el)
+        nodetoRender(this.$el, this)
     }
 
     function observe(data) {
+        if (!data || typeof data !== 'object') return
         Object.keys(data).forEach(item => {
             // 对数据进行劫持
             defineReactive(data, item, data[item])
@@ -29,26 +36,113 @@
     }
 
     function defineReactive (data, key, value) {
+        observe(value)
+        let dep = new Dep()
         Object.defineProperty(data, key, {
             get () {
-                console.log('get')
+                // console.log('get')
+                if (target) {
+                    dep.addsub(target)
+                }
                 return value
             },
             set (newvalue) {
-                console.log('set')
+                // console.log('set')
                 value = newvalue
+                dep.notify()
             }
         })
     }
 
-    function nodetoRender (node) {
-
+    function nodetoRender (node, vm) {
+        // 创建一个文档碎片
+        let nodekey = document.createDocumentFragment()
+        let child
+        // console.log('first')
+        while(node.firstChild){
+            child = node.firstChild
+            compile(child,vm)
+            nodekey.appendChild(child)
+        }
+        node.appendChild(nodekey)
     }
+    function compile(node,vm) {
+        if(node.nodeType ==1) {
+            // console.log(node)
+            // console.log(node.attributes)
+            // console.log(node.nodeType)
+            // 就是把vue语法转换成真实数据
+            // 获取node节点上的attributes属性
+            [...node.attributes].forEach(item => {
+                console.log(item)
+                if (/v\-/.test(item.nodeName)) {
+                    // 以v-开头的属性名
+                    // 给每一个羯点添加观察者
+                    new Watcher(vm,node,item.nodeValue)
+                    let data = vm.$data[item.nodeValue]
+                    console.log(data, item.nodeValue)
+                    node.value = data
+                    node.addEventListener('input',function(e){
+                        console.log(e.target.value)
+                        vm.$data[item.nodeValue] = e.target.value
+                    })
+                }
+            });
+            [...node.childNodes].forEach(item => {
+                compile(item,vm)
+            })
+        } else {
+            console.log(node.textContent)
+            let str = node.textContent
+            if (/\{\{(\w+)\}\}/.test(str)){
+                str = str.replace(/\{\{(\w+)\}\}/g,(a,b) => {
+                    new Watcher(node,vm,b)
+                    return vm.$data[b]
+                })
+                node.textContent = str
+            }
+        }
+    }
+
+
+class Dep{
+   constructor(){
+    this.sub = []
+   }
+   addsub (watch) {
+    this.sub.push(watch)
+   }
+   notify () {
+       this.sub.forEach(item => {
+        // 遍历每一个观察者通知更新数据
+        console.log(item)
+          item.update()
+       })
+   }
+}
+
+class Watcher{
+    constructor(node,vm,key) {
+        target = this
+        this.node = node
+        this.vm = vm
+        this.key = key 
+    }
+    update() {
+        target = null
+        if (this.node.nodeType == 1) {
+            this.node.value = this.vm.$data[this.key]
+        } else {
+            this.node.textContent = this.vm.$data[this.key]
+        }
+    }
+}
     var vm = new Vue ({
         el: '#app',
         data: {
             name: 'chenming',
-            time: '2020-06-30 23:00:00'
+            time: '2020-06-30 23:00:00',
+            age: '18'
         }
     })
 </script>

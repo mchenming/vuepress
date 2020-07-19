@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{age}}
+        <input type="text" v-model='age'>
+    </div>
+</body>
+
+<script>
+    // 观察数据
+    function Observe(data) {
+        if (!data || typeof data !== 'object') return
+        Object.keys(data).forEach(item => {
+            defineReactive(data, item, data[item])
+        })
+    }
+    function defineReactive(obj, key, value) {
+        Observe(value)
+        Object.defineProperty(obj, key, {
+            get() {
+                return value
+            },
+            set(newval) {
+                value = newval
+            }
+        })
+    }
+    // 渲染dom
+    function domtoRender(dom, vm) {
+        let _nodeDom = document.createDocumentFragment()
+        let childNod;
+        while (dom.firstChild) {
+            childNod = dom.firstChild
+            compire(childNod, vm)
+            _nodeDom.appendChild(childNod)
+        }
+        dom.appendChild(_nodeDom)
+    }
+    function compire(dom, vm) {
+        console.log(444)
+        if (dom.nodeType == 1) {
+            [...dom.attributes].forEach(item => {
+                console.log(item)
+                if (/v\-/.test(item.nodeName)) {
+                    // 以v-开头的属性名
+                    let data = vm.$data[item.nodeValue]
+                    // console.log(data, item.nodeValue)
+                    dom.value = data
+                    dom.addEventListener('input', function (e) {
+                        console.log(e.target.value)
+                        vm.$data[item.nodeValue] = e.target.value
+                    })
+                }
+            })
+        }
+    }
+    function Vue(options) {
+        this.$el = document.querySelector(options.el)
+        this.$data = options.data || {}
+        // 监听数据
+        Observe(this.$data)
+        // 文档碎片渲染dom
+        domtoRender(this.$el, this)
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            niquname: 'hero oh me',
+            age: 22,
+            time: 'now'
+        }
+    })
+</script>
+
+</html>
